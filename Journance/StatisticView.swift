@@ -8,11 +8,15 @@
 import SwiftUI
 
 struct StatisticView: View {
+    @EnvironmentObject var history: History
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack{
+            ChartView(fieldsPerMonth: history.fields)
+        }
     }
 }
 
-#Preview {
-    StatisticView()
-}
+//#Preview {
+//    StatisticView()
+//}

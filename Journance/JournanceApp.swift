@@ -6,12 +6,14 @@
 //
 
 import SwiftUI
+import SwiftData
+import Foundation
 
 @main
 struct JournanceApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            HomeView()
         }
     }
 }

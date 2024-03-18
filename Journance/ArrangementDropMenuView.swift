@@ -8,11 +8,21 @@
 import SwiftUI
 
 struct ArrangementDropMenuView: View {
+    @Binding var viewSelection : Int
+    let viewSelectionMenu = [0,1,2]
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            Picker("Select arrangement", selection: $viewSelection) {
+                ForEach(viewSelectionMenu, id: \.self) {
+                    Label("\($0)", systemImage: "app")
+                }
+                .pickerStyle(.menu)
+            }
+        }
     }
 }
 
-#Preview {
-    ArrangementDropMenuView()
-}
+//#Preview {
+//    ArrangementDropMenuView()
+//}

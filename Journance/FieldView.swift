@@ -7,12 +7,42 @@
 
 import SwiftUI
 
-struct FieldView: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+struct FieldView: View{
+    var field: Field
+    @State var buttonClicked = false
+    @EnvironmentObject var history: History
+    
+    var body: some View{
+        
+        NavigationLink{
+            FieldInfoView(field: field)
+                .navigationTitle(field.name)
+                .navigationBarTitleDisplayMode(.inline)
+                .foregroundStyle(rgbToColor(rgb: field.color))
+                
+        } label: {
+            HStack{
+                Text(field.name)
+                
+                Spacer()
+                
+                Text(String(format: "%.2f", field.budget))
+                    .foregroundStyle(rgbToColor(rgb: field.color)).colorInvert()
+            }
+        }
+            .swipeActions {
+                Button(role: .destructive) {
+                    withAnimation {
+                        history.delete(field)
+                    }
+                } label: {
+                    Label("Delete", systemImage: "trash")
+                }
+        }
+            .padding()
     }
 }
 
-#Preview {
-    FieldView()
-}
+//#Preview {
+//    FieldView(field: Field.example)
+//}

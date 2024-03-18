@@ -8,6 +8,9 @@
 import Foundation
 
 struct FieldInfo : Identifiable, Codable, Equatable{
-    var id: UUID
-    var infoProtocoll : [Date : String]
+    let id : UUID
+    let date : Date
+    let info : String
+    let value : Double
+   // var value = 0
 }
